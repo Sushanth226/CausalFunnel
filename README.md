@@ -55,15 +55,3 @@ If you're reviewing this repository, here is the chronological sequence of how t
 
 ---
 
-## Interview Discussion Guide
-
-If you're exploring this code as part of an interview, here are some key areas I'm prepared to discuss:
-
-**"Why did you use MongoDB instead of PostgreSQL?"**
-Analytics events are essentially time-series logs. We need incredibly fast write throughput, and we don't need complex ACID transactions at the time of ingestion. MongoDB handles unstructured document insertion rapidly, and its Aggregation Framework is perfectly suited for grouping events into sessions on the fly.
-
-**"How does your tracker handle a backend outage?"**
-The `tracker.js` intercepts events and pushes them to an in-memory array, immediately syncing to `localStorage`. A `flushQueue` function attempts to send the oldest event. If it fails, it catches the error and triggers a `setTimeout` with an exponentially increasing delay (1s, 2s, 4s... up to 30s), ensuring the server isn't DDOS'd when it comes back online.
-
-**"Explain how the Heatmap works without a library."**
-The frontend fetches X/Y coordinates from the backend. For each click, the Canvas API draws a radial gradient (black in the center, transparent at the edges). Where clicks overlap, the alpha transparency compounds, making those pixels "denser." Finally, I iterate over `getImageData()`, read the alpha value of every pixel, and map it to a color array (Blue -> Green -> Yellow -> Red) to create the thermal effect.
