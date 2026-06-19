@@ -2,8 +2,6 @@
 
 A lightweight, full-stack web analytics platform designed to track and visualize user behavior, including page views and precise click coordinates. 
 
-## Project Motivation
-
 I built CausalFunnel to understand how user behavior tracking systems work under the hood. While integrating third-party tools like Google Analytics or Hotjar is easy, building a custom tracking snippet and ingestion pipeline from scratch provided a deep dive into DOM events, single-page application (SPA) routing challenges, and high-throughput data aggregation using MongoDB.
 
 ## Architecture & Tech Stack
