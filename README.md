@@ -4,6 +4,85 @@ A lightweight, full-stack web analytics platform designed to track and visualize
 
 I built CausalFunnel to understand how user behavior tracking systems work under the hood. While integrating third-party tools like Google Analytics or Hotjar is easy, building a custom tracking snippet and ingestion pipeline from scratch provided a deep dive into DOM events, single-page application (SPA) routing challenges, and high-throughput data aggregation using MongoDB.
 
+Viewed README.md:1-70
+Listed directory Frontend
+Listed directory Backend
+Viewed .env:1-2
+Viewed .env:1-3
+
+Here are the setup instructions to get **CausalFunnel** running locally. 
+
+This is a monorepo consisting of a Node.js + Express **Backend** and a React + Vite **Frontend**.
+
+### Prerequisites
+Before you begin, ensure you have the following installed on your system:
+1. **[Node.js](https://nodejs.org/en/)** (v14 or higher recommended)
+2. **[MongoDB](https://www.mongodb.com/try/download/community)** (must be running locally)
+
+---
+
+### 1. Database Setup
+The backend requires a local instance of MongoDB.
+Make sure your local MongoDB server is running. The backend will attempt to connect to:
+`mongodb://127.0.0.1:27017/causalfunnel`
+
+*Note: You don't need to manually create the database or collections; Mongoose will handle this upon connection.*
+
+---
+
+### 2. Backend Setup
+Open a terminal and navigate to the backend directory:
+
+```bash
+cd C:\Users\surus\OneDrive\Desktop\CausalFunnel\Backend
+```
+
+**Install dependencies:**
+```bash
+npm install
+```
+
+**Verify Environment Variables:**
+Check the [.env](file:///C:/Users/surus/OneDrive/Desktop/CausalFunnel/Backend/.env) file. It should already contain:
+```env
+PORT=5000
+MONGODB_URI=mongodb://127.0.0.1:27017/causalfunnel
+```
+
+**Start the server:**
+```bash
+npm start 
+# Or node server.js if there is no start script
+```
+You should see a message indicating the server is running on port 5000 and connected to MongoDB.
+
+---
+
+### 3. Frontend Setup
+Open a **new** terminal window and navigate to the frontend directory:
+
+```bash
+cd C:\Users\surus\OneDrive\Desktop\CausalFunnel\Frontend
+```
+
+**Install dependencies:**
+```bash
+npm install
+```
+
+**Verify Environment Variables:**
+Check the [.env](file:///C:/Users/surus/OneDrive/Desktop/CausalFunnel/Frontend/.env) file. It should already contain the correct API URL:
+```env
+VITE_API_URL=http://localhost:5000
+```
+
+**Start the Vite development server:**
+```bash
+npm run dev
+```
+
+The terminal will provide a local URL (usually `http://localhost:5173`). Open this URL in your browser to view the application!
+
 ## Architecture & Tech Stack
 
 This is a monorepo consisting of:
